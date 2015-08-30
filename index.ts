@@ -148,6 +148,12 @@ export function generate(options: Options, sendMessage: (message: string) => voi
 				return;
 			}
 
+			// the source file is inside a node_modules folder, so it should not be included into our
+			// bundled output, even if it is inside our project
+			if (/[\\/]node_modules[\\/]/.test(pathUtil.normalize(sourceFile.fileName))) {
+				return;
+			}
+
 			if (excludesMap[filenameToMid(pathUtil.normalize(sourceFile.fileName))]) {
 				return;
 			}
