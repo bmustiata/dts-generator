@@ -110,8 +110,13 @@ export function generate(options: Options, sendMessage: (message: string) => voi
 
 	var filenames = getFilenames(baseDir, options.files);
 	var excludesMap: { [filename: string]: boolean; } = {};
+
+	options.excludes = options.excludes || [ "node_modules/**/*.d.ts" ];
+
 	options.excludes && options.excludes.forEach(function (filename) {
-		excludesMap[filenameToMid(pathUtil.resolve(baseDir, filename))] = true;
+		glob.sync(filename).forEach(function(globFileName) {
+			excludesMap[filenameToMid(pathUtil.resolve(baseDir, globFileName))] = true;
+		});
 	});
 
 	mkdirp.sync(pathUtil.dirname(options.out));
@@ -145,12 +150,6 @@ export function generate(options: Options, sendMessage: (message: string) => voi
 			// Source file is a default library, or other dependency from another project, that should not be included in
 			// our bundled output
 			if (pathUtil.normalize(sourceFile.fileName).indexOf(baseDir) !== 0) {
-				return;
-			}
-
-			// the source file is inside a node_modules folder, so it should not be included into our
-			// bundled output, even if it is inside our project
-			if (/[\\/]node_modules[\\/]/.test(pathUtil.normalize(sourceFile.fileName))) {
 				return;
 			}
 
