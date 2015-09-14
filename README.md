@@ -1,5 +1,10 @@
-.d.ts generator
-===============
+ciplogic .d.ts generator
+========================
+
+**This release includes only a single patch against the official 1.5.0 dts-generator release, to allow glob excludes**.
+
+Issue link:
+[htts://github.com/SitePen/dts-generator/pull/36](htts://github.com/SitePen/dts-generator/pull/36)
 
 Generates a single .d.ts bundle containing external module declarations generated from TypeScript files.
 

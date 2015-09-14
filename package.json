@@ -1,14 +1,14 @@
 {
-  "name": "dts-generator",
-  "description": ".d.ts generator. Generates a single d.ts bundle containing external modules from TypeScript files.",
-  "version": "1.5.1-pre",
+  "name": "ciplogic-dts-generator",
+  "description": "dts-generator with glob exclude patch. .d.ts generator. Generates a single d.ts bundle containing external modules from TypeScript files.",
+  "version": "1.5.0",
   "bugs": {
-    "url": "https://github.com/SitePen/dts-generator/issues"
+    "url": "https://github.com/bmustiata/dts-generator/issues"
   },
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SitePen/dts-generator.git"
+    "url": "https://github.com/bmustiata/dts-generator.git"
   },
   "bin": {
     "dts-generator": "bin/dts-generator"
